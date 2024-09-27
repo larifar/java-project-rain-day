@@ -15,7 +15,7 @@ import static com.rainday.service.HTTPRequestGet.getConnection;
 @Service
 public class WeatherAPICurrentWeatherService {
     private final String URL_BASE = "https://api.openweathermap.org/data/2.5/weather?";
-    private final String KEY_UNITS = "&appid=65920ad0ab16f3fb280b0167e804cfa1&units=metric";
+    private final String KEY_UNITS = "&appid="+ new KeyService().getKey() +"&units=metric";
     private final String LAT = "&lat=";
     private final String LON = "&lon=";
 
