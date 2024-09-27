@@ -31,3 +31,9 @@ mvn spring-boot:run
 http://localhost:8080/swagger-ui/index.html/
 
 ![img.png](img.png)
+
+## Tecnologias utilizadas:
+- Java 17
+- Spring Boot 3.3
+- Gson 2.10
+- Swagger
