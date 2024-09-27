@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.rainday.dto.CoordenatesDTO;
 import com.rainday.dto.WeatherDTOResponse;
+import com.rainday.exception.WeatherAPIException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -26,8 +27,7 @@ public class WeatherAPICurrentWeatherService {
             return transformBufferToDTO(resposta);
 
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new WeatherAPIException("Não foi possível se conectar à API: "+ e.getMessage());
         }
     }
 
