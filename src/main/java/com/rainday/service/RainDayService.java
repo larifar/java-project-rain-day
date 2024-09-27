@@ -1,6 +1,7 @@
 package com.rainday.service;
 
 import com.rainday.dto.WeatherDTOResponse;
+import com.rainday.exception.WeatherAPIException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class RainDayService {
     public WeatherDTOResponse getWeather(String location) throws UnsupportedEncodingException {
         var coord = geoLocationService.getLocation(transformLocation(location));
         if (coord == null) {
-            throw new RuntimeException("Não foi possível obter as coordenadas para a localização: " + location);
+            throw new WeatherAPIException("Não foi possível obter as coordenadas para a localização: " + location);
         }
         return weatherService.getCurrentWeather(coord);
     }

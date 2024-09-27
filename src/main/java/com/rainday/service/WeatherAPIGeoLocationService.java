@@ -3,6 +3,7 @@ package com.rainday.service;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.rainday.dto.CoordenatesDTO;
+import com.rainday.exception.WeatherAPIException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -27,8 +28,7 @@ public class WeatherAPIGeoLocationService {
             return transformBufferToDTO(resposta);
 
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new WeatherAPIException("Não foi possível conectar à API: " + e.getMessage());
         }
     }
 
