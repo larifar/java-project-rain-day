@@ -7,7 +7,9 @@ O projeto proposto tem como função se conectar a uma API de localização, peg
 - Java 17
 - Maven
 - API KEY: [Weather API](https://openweathermap.org/api)
+- Docker (opcional)
 
+## Execução sem Docker:
 ### Criar arquivo com api key
 Antes de utilizar o sistema, deve-se entrar no site, se cadastrar e pegar uma key (grátis).
 Crie um arquivo config.properties na raiz do projeto, e coloque sua chave:
@@ -15,18 +17,30 @@ Crie um arquivo config.properties na raiz do projeto, e coloque sua chave:
 echo "API_KEY=sua_chave" > config.properties
 ```
 
-## Build
+### Build
 
 ```shell
 mvn clean install
 ```
 
-## Execução
+### Execução
 ```shell
 mvn spring-boot:run
 ```
 
-## Documentação online (OpenAPI)
+## Execução com Docker:
+
+### Build
+```shell
+docker build -t java-project-rain-day:1.0 .
+```
+
+### Execução
+```shell
+docker run --name nome-do-container -e API_KEY=sua_chave -p 8080:8080 java-project-rain-day:1.0
+```
+
+### Documentação online (OpenAPI)
 
 http://localhost:8080/swagger-ui/index.html/
 
